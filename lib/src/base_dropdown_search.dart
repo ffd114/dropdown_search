@@ -295,6 +295,7 @@ class DropdownSearchState<T> extends State<BaseDropdownSearch<T>> {
   var _uiToApply = UiToApply.material;
   CustomOverlayEntry? _customOverlyEntry;
   final autoCompleteFocusNode = FocusNode();
+  final formFieldKey = GlobalKey<FormFieldState>();
 
   @override
   void initState() {
@@ -396,6 +397,7 @@ class DropdownSearchState<T> extends State<BaseDropdownSearch<T>> {
     return TapRegion(
       groupId: widget.groupId,
       child: FormField<List<T>>(
+        key: formFieldKey,
         enabled: widget.enabled,
         onSaved: widget.onSavedMultiSelection,
         validator: widget.validatorMultiSelection,
@@ -519,6 +521,7 @@ class DropdownSearchState<T> extends State<BaseDropdownSearch<T>> {
 
   Widget _formFieldSingleSelection() {
     return FormField<T>(
+      key: formFieldKey,
       enabled: widget.enabled,
       onSaved: widget.onSaved,
       validator: widget.validator,
@@ -553,6 +556,7 @@ class DropdownSearchState<T> extends State<BaseDropdownSearch<T>> {
 
   Widget _formFieldMultiSelection() {
     return FormField<List<T>>(
+      key: formFieldKey,
       enabled: widget.enabled,
       onSaved: widget.onSavedMultiSelection,
       validator: widget.validatorMultiSelection,
